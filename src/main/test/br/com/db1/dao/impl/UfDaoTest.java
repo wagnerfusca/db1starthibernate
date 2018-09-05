@@ -85,18 +85,7 @@ public class UfDaoTest extends AbstractTestCase {
 
 	@Test
 	public void deleteTest() {
-		Query queryCidade = manager.createNativeQuery("DELETE FROM Cidade");
-		queryCidade.executeUpdate();
-
-		Query queryUf = manager.createNativeQuery("DELETE FROM Uf");
-		queryUf.executeUpdate();
-		Assert.assertTrue(dao.findAll().size() == 0);
-
-		Uf uf = new Uf();
-		uf.setNome("PP");
-		dao.save(uf);
-
-		Assert.assertTrue(dao.findAll().size() == 1);
+		Uf uf = dao.findById(4);
 		
 		dao.delete(uf.getId());
 		Assert.assertTrue(dao.findAll().size() == 0);
